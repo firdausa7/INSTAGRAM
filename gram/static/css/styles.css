@@ -1,0 +1,11 @@
+body{
+	background-color: #fafafa!important;
+    padding-top: 4.5rem;
+}
+.navbar{
+    background-color: white;
+}
+.gram   {
+    display: inline-block;
+    background-image: url(../images/photo1.png);
+}
