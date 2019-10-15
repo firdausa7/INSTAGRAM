@@ -28,3 +28,20 @@ def prof(request):
     user_liked = [like.photo for like in user_object.profile.mylikes.all()]
     print(user_liked)
     return render(request, 'adminprofile.html', locals())\
+@login_required(login_url='/accounts/login/')
+def edit(request):
+    if request.method == 'POST':
+        print(request.FILES)
+        new_profile = ProfileForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.profile
+        )
+        if new_profile.is_valid():
+            new_profile.save()
+            print(new_profile.fields)
+            # print(new_profile.fields.profile_picture)
+            return redirect('myaccount')
+    else:
+        new_profile = ProfileForm(instance=request.user.profile)
+    return render(request, 'edit.html', locals())
