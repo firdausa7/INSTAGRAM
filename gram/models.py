@@ -77,3 +77,7 @@ class Comment(models.Model):
     text = models.TextField()
     photo = models.ForeignKey(Post, related_name='comments')
     user = models.ForeignKey(Profile, related_name='comments')
+
+class Likes(models.Model):
+    user = models.ForeignKey(Profile, related_name='mylikes')
+    photo = models.ForeignKey(Post, related_name='photolikes')
