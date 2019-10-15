@@ -73,3 +73,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-pk"]
+class Comment(models.Model):
+    text = models.TextField()
+    photo = models.ForeignKey(Post, related_name='comments')
+    user = models.ForeignKey(Profile, related_name='comments')
