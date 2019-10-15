@@ -1,6 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import *
+from django.contrib.auth.decorators import login_required
+from .models import *
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def home (request):
+    image_form = PostForm()
+    images = Post.objects.all()
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+
     return render(request, 'home.html')
