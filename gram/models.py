@@ -87,3 +87,6 @@ class Save(models.Model):
     photo = models.ForeignKey(Post)
     class Meta:
         ordering = ["-pk"]
+class Follows(models.Model):
+    follower = models.ForeignKey(Profile, related_name='following')
+    followee = models.ForeignKey(Profile, related_name='followers')
