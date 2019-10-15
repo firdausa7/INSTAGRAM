@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .forms import *
 from django.contrib.auth.decorators import login_required
@@ -45,3 +45,13 @@ def edit(request):
     else:
         new_profile = ProfileForm(instance=request.user.profile)
     return render(request, 'edit.html', locals())
+
+@login_required(login_url='/accounts/login/')
+def user(request, user_id):
+    user_object=get_object_or_404(User, pk=user_id)
+    if request.user == user_object:
+        return redirect('myaccount')
+    is_following = user_object.profile not in request.user.profile.follows
+    user_images = user_object.profile.posts.all()
+    user_liked = [like.photo for like in user_object.profile.mylikes.all()]
+    return render(request, 'profile.html', locals())
