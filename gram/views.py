@@ -9,10 +9,11 @@ from .models import *
 def home (request):
     image_form = PostForm()
     images = Post.objects.all()
+    commentform = CommentForm()
 
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             request.user.profile.post(form)
 
-    return render(request, 'home.html')
+    return render(request, 'home.html', locals())
