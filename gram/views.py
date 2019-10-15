@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def home (request):
     image_form = PostForm()
     images = Post.objects.all()
