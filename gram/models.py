@@ -12,7 +12,7 @@ class Profile(models.Model):
     Name = models.TextField(default="Anonymous")
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', null=True)
     profile_picture = models.ImageField(upload_to='users/', default='users/user.png', null=True)
-    bio = models.TextField(default="Welcome Me!")
+    bio = models.TextField(default="Welcome!")
 
 
 
