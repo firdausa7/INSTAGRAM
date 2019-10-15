@@ -12,5 +12,7 @@ def home (request):
 
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            request.user.profile.post(form)
 
     return render(request, 'home.html')
