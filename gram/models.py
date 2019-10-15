@@ -85,3 +85,5 @@ class Likes(models.Model):
 class Save(models.Model):
     user = models.ForeignKey(Profile, related_name='save')
     photo = models.ForeignKey(Post)
+    class Meta:
+        ordering = ["-pk"]
