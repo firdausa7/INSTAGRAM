@@ -1,6 +1,6 @@
 beautifulsoup4==4.8.1
 confusable-homoglyphs==3.2.0
-Django==2.2.6
+Django==2.2.8
 django-admin==2.0.0
 django-bootstrap4==1.0.1
 django-excel-response2==2.0.8
